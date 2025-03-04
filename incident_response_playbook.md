@@ -3,7 +3,7 @@ _A simple batch script for **incident response (IR) and forensic triage**, desig
 
 ---
 
-## 🚀 How to Use
+## How to Use
 ### Option 1: Run Individual Commands
 1. **Open CMD** (or use EDR’s remote shell).
 2. **Run each command manually** as needed (listed below).
@@ -18,16 +18,16 @@ _A simple batch script for **incident response (IR) and forensic triage**, desig
 
 ---
 
-## 📂 Writing Individual Scripts
+## Writing Individual Scripts
 If you cannot upload a batch script, you can manually create each script on the target machine.
 
-### 1️⃣ Create the Incident Response Directory
+### Create the Incident Response Directory
 ```cmd
 mkdir C:\IR
 ```
 _All collected logs will be stored in `C:\IR`._
 
-### 2️⃣ Gather System Information
+### Gather System Information
 ```cmd
 systeminfo > C:\IR\systeminfo.txt
 hostname > C:\IR\hostname.txt
@@ -35,14 +35,14 @@ whoami /all > C:\IR\whoami.txt
 ```
 🔍 **Review OS version, patch level, and logged-in user details.**
 
-### 3️⃣ Capture Running Processes
+### Capture Running Processes
 ```cmd
 tasklist /v > C:\IR\tasklist.txt
 wmic process list full > C:\IR\process_list.txt
 ```
 🔍 **Look for suspicious processes or abnormal resource usage.**
 
-### 4️⃣ Capture Network Information
+### Capture Network Information
 ```cmd
 netstat -ano > C:\IR\netstat.txt
 ipconfig /all > C:\IR\ipconfig.txt
@@ -51,7 +51,7 @@ nslookup example.com > C:\IR\dns_test.txt
 ```
 🔍 **Identify unauthorized connections or altered network configurations.**
 
-### 5️⃣ Capture Logged-in Users & Sessions
+### Capture Logged-in Users & Sessions
 ```cmd
 query user > C:\IR\query_user.txt
 net user > C:\IR\net_user.txt
@@ -59,7 +59,7 @@ net localgroup administrators > C:\IR\local_admins.txt
 ```
 🔍 **Detect unauthorized user accounts.**
 
-### 6️⃣ Check for Persistence Mechanisms
+### Check for Persistence Mechanisms
 ```cmd
 wmic startup get caption,command > C:\IR\startup_items.txt
 schtasks /query /fo LIST /v > C:\IR\scheduled_tasks.txt
@@ -67,30 +67,30 @@ reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run /s > C:\IR\autoruns
 ```
 🔍 **Review scheduled tasks, startup items, and registry autoruns.**
 
-### 7️⃣ Capture Event Logs (Last 24 Hours)
+### Capture Event Logs (Last 24 Hours)
 ```cmd
 wevtutil qe Security /q:"*[System[(TimeCreated[timediff(@SystemTime) <= 86400000])]]" /f:text > C:\IR\security_logs.txt
 wevtutil qe System /q:"*[System[(TimeCreated[timediff(@SystemTime) <= 86400000])]]" /f:text > C:\IR\system_logs.txt
 ```
 🔍 **Look for failed logins, privilege escalation attempts, and unauthorized access.**
 
-### 8️⃣ Capture Active Network Connections
+### Capture Active Network Connections
 ```cmd
 netstat -ano | findstr ESTABLISHED > C:\IR\established_connections.txt
 netstat -ano | findstr LISTENING > C:\IR\listening_ports.txt
 ```
 🔍 **Find unexpected remote connections.**
 
-### 9️⃣ Optional: Isolate the System
+### Optional: Isolate the System
 ```cmd
 netsh advfirewall set allprofiles state off
 ipconfig /release
 ```
-🚨 **Use with caution**: This will disable the firewall and disconnect the network.
+**Use with caution**: This will disable the firewall and disconnect the network.
 
 ---
 
-## 🔄 Full Batch Script (`ir_response.bat`)
+## Full Batch Script (`ir_response.bat`)
 For automation, create and execute the following **batch script**:
 
 ```cmd
@@ -151,7 +151,7 @@ exit
 
 ---
 
-## 📂 Output Files
+## Output Files
 | **File** | **Description** |
 |----------|---------------|
 | `systeminfo.txt` | OS version, hostname, installed updates |
@@ -164,7 +164,7 @@ exit
 
 ---
 
-## 🔗 References
+## References
 - [Microsoft Sysinternals](https://docs.microsoft.com/en-us/sysinternals/)
 - [Windows Forensic Analysis](https://docs.microsoft.com/en-us/windows/security/threat-protection/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
