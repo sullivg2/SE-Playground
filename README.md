@@ -23,6 +23,27 @@ cd SE-Playground
 - **IR Playbooks**: Follow structured guides for incident investigation and containment.
 - **Custom Security Tools**: Leverage automation to streamline security operations.
 
+## Files in This Repository
+### `incident_response_playbook.md`
+This document contains a **CMD-based Incident Response Playbook**, which provides step-by-step commands for:
+- Collecting system and process information
+- Capturing network activity
+- Identifying persistence mechanisms
+- Analyzing security event logs
+- Isolating compromised systems
+
+### `Simulated-suspicious-activity-PowerShell.ps1`
+This PowerShell script simulates **suspicious activity** designed to trigger alerts in EDR platforms. It helps test detection rules, visibility, and response capabilities. Key actions include:
+- Executing encoded commands
+- Modifying registry keys
+- Simulating process injections or lateral movement
+
+### `ir_response.bat`
+A **batch script** that automates the **Incident Response Playbook** commands. Instead of running commands manually, execute this script to:
+- Collect forensic artifacts
+- Capture event logs and network connections
+- Create a compressed archive of findings for further analysis
+
 ## Contributions
 Want to contribute? Feel free to submit a **Pull Request** with your own playbooks, scripts, or improvements!
 
