@@ -44,6 +44,24 @@ A **batch script** that automates the **Incident Response Playbook** commands. I
 - Capture event logs and network connections
 - Create a compressed archive of findings for further analysis
 
+## EDR Testing Suite
+The **EDR Testing Suite** is a collection of scripts designed to simulate different types of attack behaviors to test detection capabilities of Endpoint Detection and Response (EDR) solutions.
+
+### `Invoke-EDR-Test.ps1`
+This PowerShell script automates multiple suspicious activities to evaluate how an EDR solution detects and responds to:
+- Encoded PowerShell execution
+- Simulated credential dumping
+- Process injection attempts
+- Registry-based persistence techniques
+
+### `Attack-Simulations/`
+This folder contains individual attack simulation scripts:
+- **CredentialDumping.ps1** – Simulates credential dumping techniques to test EDR detections.
+- **ProcessInjection.ps1** – Simulates process injection using `rundll32`.
+- **PersistenceTesting.ps1** – Simulates persistence mechanisms via registry modifications.
+
+Each script logs test results to `C:\EDR-Testing\Logs` for further analysis.
+
 ## Contributions
 Want to contribute? Feel free to submit a **Pull Request** with your own playbooks, scripts, or improvements!
 
